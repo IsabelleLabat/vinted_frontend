@@ -1,27 +1,9 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-const Home = () => {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        " https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
-      // console.log(response.data);
-      // setData(response.data);
-      // setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
+const Home = ({ offers, isLoading }) => {
   return isLoading ? (
     <span>En cours de chargement</span>
   ) : (
     <div>
-      {data.offers.map((offer) => {
+      {offers.map((offer) => {
         console.log(offer);
 
         <div key={offer.id}>
