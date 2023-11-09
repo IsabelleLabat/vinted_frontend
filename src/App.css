@@ -6,6 +6,54 @@ a {
   text-decoration: none;
 }
 
+/* Header */
+
+header {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+header img {
+  height: 40px;
+  padding-right: 20px;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.search-input {
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 37px;
+  outline: none;
+  padding-left: 40px;
+  width: 590px;
+  color: lightgrey;
+  margin-right: 20px;
+}
+
+.header-button {
+  border: 1px solid #2cb1ba;
+  color: #2cb1ba;
+  border-radius: 5px;
+  font-size: 12px;
+  height: 30px;
+  outline: none;
+  width: 115px;
+  background-color: #fff;
+  margin-right: 20px;
+}
+
+.sell-button {
+  background-color: #2cb1ba;
+  color: white;
+}
+
 .bcg-banner {
   width: 100vw;
   background-image: url(/src/assets/img/hero.jpg);
@@ -92,4 +140,14 @@ main {
   display: flex;
   flex-direction: column;
   border: solid red 1px;
+}
+
+/* Signup */
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  gap: 20px;
 }

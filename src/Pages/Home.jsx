@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Home = ({ params }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  // const [avatarImg, setavatarImg] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,10 +39,12 @@ const Home = ({ params }) => {
             <Link to={`/offers/${offer._id}`} key={offer._id}>
               <div className="card-offer">
                 <div className="owner">
+                  {/* {offer.secure_url} ? (
                   <img
                     src={offer.owner.account.avatar.secure_url}
-                    alt="avatar img"
+                    alt="avatar"
                   />
+                  ) : () */}
 
                   <p>{offer.owner.account.username}</p>
                 </div>
@@ -49,7 +52,7 @@ const Home = ({ params }) => {
                 <img
                   className="offer-img"
                   src={offer.product_image.url}
-                  alt="image produit"
+                  alt="produit"
                 />
                 <p>{offer.product_price} €</p>
                 <p className="details">{offer.product_details[1].TAILLE}</p>
