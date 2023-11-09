@@ -33,28 +33,30 @@ const Home = ({ params }) => {
 
       <div className="home-wrapper">
         {data.offers.map((offer) => {
-          // console.log(offer);
+          console.log(offer);
 
           return (
             <Link to={`/offers/${offer._id}`} key={offer._id}>
               <div className="card-offer">
                 <div className="owner">
-                  {/* {offer.secure_url} ? (
-                  <img
-                    src={offer.owner.account.avatar.secure_url}
-                    alt="avatar"
-                  />
-                  ) : () */}
-
-                  <p>{offer.owner.account.username}</p>
+                  {offer.owner.account.avatar ? (
+                    <img
+                      className="avatar"
+                      src={offer.owner.account.avatar.secure_url}
+                      alt="avatar"
+                    />
+                  ) : null}
+                  <p className="home-username">
+                    {offer.owner.account.username}
+                  </p>
                 </div>
 
                 <img
-                  className="offer-img"
+                  className="offer-img-home"
                   src={offer.product_image.url}
                   alt="produit"
                 />
-                <p>{offer.product_price} €</p>
+                <p className="home-price">{offer.product_price} €</p>
                 <p className="details">{offer.product_details[1].TAILLE}</p>
                 <p className="details">{offer.product_details[0].MARQUE}</p>
               </div>

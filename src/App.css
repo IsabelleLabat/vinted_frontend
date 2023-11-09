@@ -7,20 +7,25 @@ a {
 }
 
 /* Header */
-
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 header {
   width: 1280px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 20px;
+
   padding-bottom: 20px;
 }
 
-header img {
+.logo {
   height: 40px;
   padding-right: 20px;
-  padding-top: 20px;
   cursor: pointer;
 }
 
@@ -47,6 +52,7 @@ header img {
   width: 115px;
   background-color: #fff;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .sell-button {
@@ -90,8 +96,8 @@ header img {
   width: 187px;
   padding: 0 14px;
 }
-/* offers */
-.offer-img {
+/* Home offers */
+.offer-img-home {
   width: 235px;
   height: 360px;
   object-fit: cover;
@@ -105,6 +111,7 @@ header img {
 
 .owner {
   display: flex;
+  align-items: center;
   gap: 10px;
   margin-bottom: 15px;
 }
@@ -126,28 +133,132 @@ header img {
   cursor: pointer;
   padding: 0 6px 16px;
   width: 235px;
+  margin-bottom: 30px;
+}
+
+.home-username {
+  color: #999;
+  font-size: 13px;
+}
+
+.home-price {
+  margin-top: 15px;
+  color: #111111;
+  font-size: 14px;
 }
 
 /* Page offer */
 
 main {
   display: flex;
-  justify-content: space-between;
-  border: solid 1px green;
+  justify-content: space-around;
+
+  background-color: #ebedee;
+  height: 100vh;
 }
 
 .details-product {
   display: flex;
   flex-direction: column;
-  border: solid red 1px;
+
+  background-color: #ffffff;
+  width: 400px;
+  height: 600px;
+  margin-top: 30px;
+  padding: 40px;
 }
 
+.offer-price {
+  color: #111111;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+
+.offer-details {
+  line-height: 25px;
+  color: #666666;
+}
+
+.key-details {
+  color: #999999;
+}
+.offer-img {
+  width: 450px;
+  height: 600px;
+  object-fit: cover;
+  margin-top: 30px;
+}
+
+.separator {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: hsla(0, 0%, 7%, 0.1);
+  display: block;
+  height: 1px;
+  width: 100%;
+}
+
+.offer-product-name {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.offer-product-description {
+  color: #666666;
+  width: 100%;
+}
+
+.offer-owner {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.offer-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 /* Signup */
 
 form {
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 500px;
   margin: 0 auto;
   gap: 20px;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid #efefef;
+  height: 35px;
+  width: 275px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.submitButton {
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  height: 45px;
+  margin-top: 20px;
+  outline: none;
+}
+
+::placeholder {
+  color: #c1c1c1;
+  font-weight: lighter;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
 }

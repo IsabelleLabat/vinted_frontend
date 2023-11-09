@@ -35,28 +35,33 @@ const Offer = () => {
         <img className="offer-img" src={data.product_image.secure_url} alt="" />
       </div>
 
-      <div className="datails-product">
-        <p>{data.product_price}</p>
+      <div className="details-product" key={data._id}>
+        <p className="offer-price">{data.product_price} € </p>
         {data.product_details.map((detail) => {
-          //   return (
-          //     <div key={detail.index}>
-          //       <p> {detail.MARQUE}</p>
-          //       <p> {detail.TAILLE}</p>
-          //       <p> {detail.ÉTAT}</p>
-          //       <p> {detail.COULEUR}</p>
-          //       <p> {detail.EMPLACEMENT}</p>
-          //     </div>
-          //   );
+          //   console.log(detail);
+          const clefs = Object.keys(detail);
+          //   console.log(clefs);
+          const clef = clefs[0];
+          //   console.log(clef);
+          return (
+            <div key={clef}>
+              <span className="key-details">{clef} : </span>
+              <span className="offer-details">{detail[clef]}</span>
+            </div>
+          );
         })}
+        <div className="separator"></div>
+        <p className="offer-product-name">{data.product_name}</p>
+        <p className="offer-product-description">{data.product_description}</p>
 
-        <p>{data.product_name}</p>
-        <p>{data.product_description}</p>
-        <img
-          className="offer-img"
-          src={data.owner.account.avatar.secure_url}
-          alt=""
-        />
-        <p>{data.owner.account.username}</p>
+        <div className="offer-owner">
+          <img
+            className="offer-avatar"
+            src={data.owner.account.avatar.secure_url}
+            alt=""
+          />
+          <p>{data.owner.account.username}</p>
+        </div>
       </div>
     </main>
   );

@@ -1,21 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
-
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [data, setData] = useState();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
     setEmail(value);
-  };
-
-  const handleNameChange = (event) => {
-    const value = event.target.value;
-    setName(value);
   };
 
   const handlePasswordChange = (event) => {
@@ -30,19 +23,22 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
         {
           email: email,
-          username: name,
           password: password,
         }
       );
       //   console.log(data);
       setData(response.data);
       //   console.log(data.token);
-      //   console.log(response);
+      console.log(response);
 
-      Cookies.set("token", response.data.token, { expires: 15 });
+      if ((password, email)) {
+        Cookies.set("token", response.data.token, { expires: 15 });
+      } else {
+        alert("Vous n'êtes pas inscrit");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -50,15 +46,7 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>S'inscrire</h1>
-      <input
-        id="name"
-        type="text"
-        placeholder="Nom d'utilisateur"
-        name="username"
-        value={name}
-        onChange={handleNameChange}
-      />
+      <h1>Se Connecter</h1>
 
       <input
         id="email"
@@ -78,9 +66,9 @@ const Signup = () => {
         onChange={handlePasswordChange}
       />
 
-      <input className="submitButton" type="submit" value="S'inscrire" />
+      <input className="submitButton" type="submit" value="Se connecter" />
     </form>
   );
 };
 
-export default Signup;
+export default Login;
