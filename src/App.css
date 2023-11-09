@@ -1,0 +1,95 @@
+:root {
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bcg-banner {
+  width: 100vw;
+  background-image: url(/src/assets/img/hero.jpg);
+  background-position: 50%;
+  background-size: cover;
+  height: 455px;
+  position: relative;
+  width: 100%;
+}
+
+.home-hero-box {
+  background-color: #ffffff;
+  width: 360px;
+  height: 220px;
+  border-radius: 5px;
+  position: absolute;
+  padding: 25px;
+  top: 75px;
+  left: 65px;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-hero-box button {
+  background-color: #2baeb7;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 45px;
+  margin-top: 30px;
+  width: 187px;
+  padding: 0 14px;
+}
+/* offers */
+.offer-img {
+  width: 235px;
+  height: 360px;
+  object-fit: cover;
+}
+
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.owner {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.details {
+  color: #999999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.home-wrapper {
+  width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto auto;
+}
+
+.card-offer {
+  cursor: pointer;
+  padding: 0 6px 16px;
+  width: 235px;
+}
+
+/* Page offer */
+
+main {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px green;
+}
+
+.details-product {
+  display: flex;
+  flex-direction: column;
+  border: solid red 1px;
+}
