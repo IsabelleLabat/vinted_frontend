@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
-const Login = () => {
+import { useNavigate } from "react-router-dom";
+
+const Login = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -29,16 +30,16 @@ const Login = () => {
           password: password,
         }
       );
-      //   console.log(data);
-      setData(response.data);
-      //   console.log(data.token);
-      console.log(response);
 
-      if ((password, email)) {
-        Cookies.set("token", response.data.token, { expires: 15 });
-      } else {
-        alert("Vous n'êtes pas inscrit");
-      }
+      // if ((password, email)) {
+      //   Cookies.set("token", response.data.token, { expires: 15 });
+      // } else {
+      //   alert("Vous n'êtes pas inscrit");
+      // }
+      console.log(response.data);
+      // Cookies.set("token", response.data.token);
+      handleToken(response.data.token);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

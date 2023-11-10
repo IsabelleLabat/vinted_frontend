@@ -1,7 +1,34 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Header = ({ token, handleToken }) => {
-  return (
+const SearchBarTest = ({ token, handleToken }) => {
+  const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://lereacteur-vinted-api.herokuapp.com/offers"
+      );
+      console.log(response.data);
+      setData(response.data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const handleSearchTerm = (event) => {
+    let value = event.target.value;
+    value.length > 2 && setSearchTerm(value);
+  };
+
+  console.log(searchTerm);
+
+  return isLoading ? (
+    <span>Loading</span>
+  ) : (
     <header>
       <div className="navigation">
         <Link to={"/"}>
@@ -16,6 +43,7 @@ const Header = ({ token, handleToken }) => {
           className="search-input"
           type="search"
           placeholder="Rechercher des articles"
+          onChange={handleSearchTerm}
         />
 
         {/* Si token existe, c'est que je suis connecté, j'affiche le bouton déconnexion, sinon j'affiche les 2 autres boutons */}
@@ -44,8 +72,21 @@ const Header = ({ token, handleToken }) => {
           Vends tes articles
         </button>
       </div>
+
+      <div>
+        {data.offers
+          .filter((val) => {
+            return val.product_name
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase());
+          })
+          .map((val) => {
+            console.log(val);
+            return <div key={val._id}>{val.product_name}</div>;
+          })}
+      </div>
     </header>
   );
 };
 
-export default Header;
+export default SearchBarTest;

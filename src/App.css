@@ -55,6 +55,12 @@ header {
   cursor: pointer;
 }
 
+.disconnect {
+  background-color: rgb(125, 39, 39);
+  border: solid 1px rgb(125, 39, 39);
+  color: white;
+}
+
 .sell-button {
   background-color: #2cb1ba;
   color: white;
@@ -261,4 +267,30 @@ h1 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.checkbox > div {
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox span {
+  color: #666666;
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+.checkbox p {
+  width: 275px;
+  font-size: 14px;
+  color: #666666;
+}
+
+.input-checkbox {
+  width: 20px;
+}
+
+.connect {
+  font-size: 14px;
+  color: #2cb1ba;
 }

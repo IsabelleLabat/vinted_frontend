@@ -33,7 +33,7 @@ const Home = ({ params }) => {
 
       <div className="home-wrapper">
         {data.offers.map((offer) => {
-          console.log(offer);
+          // console.log(offer);
 
           return (
             <Link to={`/offers/${offer._id}`} key={offer._id}>
