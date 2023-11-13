@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Publish = ({ handleToken }) => {
+const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -40,7 +40,7 @@ const Publish = ({ handleToken }) => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${handleToken}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
@@ -135,7 +135,7 @@ const Publish = ({ handleToken }) => {
         <label htmlFor="price">Prix</label>
         <input
           id="price"
-          type="text"
+          type="number"
           placeholder="0,00€"
           value={price}
           onChange={(event) => {
@@ -147,10 +147,10 @@ const Publish = ({ handleToken }) => {
           checked={exchange}
           onChange={() => setExchange(!exchange)}
         />
-        <span>Je suis intéressée par les échanges</span>
+        <span>Je suis intéressé par les échanges</span>
         <input type="submit" value="Ajouter" />
       </form>
-      {pictureFromCloudinary && <img src={pictureFromCloudinary} />}
+      {pictureFromCloudinary && <img src={pictureFromCloudinary} alt="offer" />}
     </>
   );
 };

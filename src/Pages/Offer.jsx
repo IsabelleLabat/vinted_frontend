@@ -55,11 +55,14 @@ const Offer = () => {
         <p className="offer-product-description">{data.product_description}</p>
 
         <div className="offer-owner">
-          <img
-            className="offer-avatar"
-            src={data.owner.account.avatar.secure_url}
-            alt=""
-          />
+          {data.owner.account.avatar.secure_url ? (
+            <img
+              className="offer-avatar"
+              src={data.owner.account.avatar.secure_url}
+              alt=""
+            />
+          ) : null}
+
           <p>{data.owner.account.username}</p>
         </div>
       </div>

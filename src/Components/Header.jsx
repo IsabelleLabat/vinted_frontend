@@ -22,6 +22,8 @@ const Header = ({ token, handleToken, searchTerm, setSearchTerm }) => {
           }}
         />
 
+        <input type="range" min="0" max="400" />
+
         {/* Si token existe, c'est que je suis connecté, j'affiche le bouton déconnexion, sinon j'affiche les 2 autres boutons */}
         {token ? (
           <button
