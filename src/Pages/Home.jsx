@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = ({ params }) => {
+const Home = ({ params, searchTerm }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   // const [avatarImg, setavatarImg] = useState(true);
@@ -10,14 +10,15 @@ const Home = ({ params }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
+        `https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchTerm}`
       );
       // console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [searchTerm]);
+
   return isLoading ? (
     <span>En cours de chargement</span>
   ) : (

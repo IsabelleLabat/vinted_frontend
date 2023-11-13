@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ token, handleToken }) => {
+const Header = ({ token, handleToken, searchTerm, setSearchTerm }) => {
   return (
     <header>
       <div className="navigation">
@@ -14,8 +14,12 @@ const Header = ({ token, handleToken }) => {
 
         <input
           className="search-input"
-          type="search"
+          type="text"
+          value={searchTerm}
           placeholder="Rechercher des articles"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
         />
 
         {/* Si token existe, c'est que je suis connecté, j'affiche le bouton déconnexion, sinon j'affiche les 2 autres boutons */}

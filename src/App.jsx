@@ -10,7 +10,6 @@ import Login from "./Pages/login";
 
 // Components
 import Header from "./Components/Header";
-import SearchBarTest from "./Pages/SearchBarTest";
 
 function App() {
   // State dans lequel je stocke le token. Sa valeur de base sera :
@@ -20,6 +19,7 @@ function App() {
     Cookies.get("token") || null
     // Cookies.get("token") ? Cookies.get("token") : null
   );
+  const [searchTerm, setSearchTerm] = useState("");
   // Cette fonction permet de stocker le token dans le state et dans les cookies ou supprimer le token dans le state et dans les cookies
   const handleToken = (token) => {
     if (token) {
@@ -34,13 +34,17 @@ function App() {
   return (
     <Router>
       {/* Je peux passer des props à mes composants */}
-      <Header token={token} handleToken={handleToken} />
+      <Header
+        token={token}
+        search={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleToken={handleToken}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/search" element={<SearchBarTest />} />
       </Routes>
     </Router>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SearchBarTest = ({ token, handleToken }) => {
   const [data, setData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
