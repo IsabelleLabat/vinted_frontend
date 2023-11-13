@@ -7,7 +7,7 @@ import Home from "./Pages/Home";
 import Offer from "./Pages/Offer";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/login";
-
+import Publish from "./Pages/Publish";
 // Components
 import Header from "./Components/Header";
 
@@ -41,10 +41,11 @@ function App() {
         handleToken={handleToken}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home searchTerm={searchTerm} />} />
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/publish" element={<Publish />} />
       </Routes>
     </Router>
   );
