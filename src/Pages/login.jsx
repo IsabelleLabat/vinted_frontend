@@ -7,6 +7,8 @@ const Login = ({ handleToken }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleEmailChange = (event) => {
     const value = event.target.value;
     setEmail(value);
@@ -41,6 +43,11 @@ const Login = ({ handleToken }) => {
       handleToken(response.data.token);
       navigate("/publish");
     } catch (error) {
+      if (error.response.data.message === "Missing parameters") {
+        setErrorMessage("Merci de remplir tous les champs");
+      } else if (error.response.status === 401) {
+        setErrorMessage("Email ou mot de passe invalide");
+      }
       console.log(error);
     }
   };
@@ -68,7 +75,7 @@ const Login = ({ handleToken }) => {
         value={password}
         onChange={handlePasswordChange}
       />
-
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <input
         className="signin-submitButton"
         type="submit"
