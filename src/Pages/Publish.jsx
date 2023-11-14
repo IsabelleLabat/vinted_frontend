@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
@@ -56,7 +56,7 @@ const Publish = ({ token }) => {
     }
   };
 
-  return (
+  return token ? (
     <>
       <main className="publish-main">
         <div className="publish-container">
@@ -72,6 +72,13 @@ const Publish = ({ token }) => {
                     setPicture(event.target.files[0]);
                   }}
                 />
+                {picture && (
+                  <img
+                    className="picture-file"
+                    src={URL.createObjectURL(picture)}
+                    alt="pic"
+                  />
+                )}
               </div>
             </div>
             <div className="text-input-section">
@@ -208,6 +215,8 @@ const Publish = ({ token }) => {
         </div>
       </main>
     </>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

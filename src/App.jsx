@@ -22,15 +22,21 @@ function App() {
     Cookies.get("token") || null
     // Cookies.get("token") ? Cookies.get("token") : null
   );
+  const [idUser, setIdUser] = useState(Cookies.get("idUser") || null);
+
   const [searchTerm, setSearchTerm] = useState("");
   // Cette fonction permet de stocker le token dans le state et dans les cookies ou supprimer le token dans le state et dans les cookies
-  const handleToken = (token) => {
+  const handleToken = (token, idUser) => {
     if (token) {
       Cookies.set("token", token, { expires: 15 });
+      Cookies.set("idUser", idUser, { expires: 15 });
       setToken(token);
+      setIdUser(idUser);
     } else {
       Cookies.remove("token");
+      Cookies.remove("idUser");
       setToken(null);
+      setIdUser(null);
     }
   };
 
@@ -42,6 +48,7 @@ function App() {
         search={searchTerm}
         setSearchTerm={setSearchTerm}
         handleToken={handleToken}
+        idUser={idUser}
       />
       <Routes>
         <Route
@@ -49,10 +56,22 @@ function App() {
           element={<Home searchTerm={searchTerm} toke={token} />}
         />
         <Route path="/offers/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
-        <Route path="/publish" element={<Publish token={token} />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route
+          path="/signup"
+          element={<Signup handleToken={handleToken} idUser={idUser} />}
+        />
+        <Route
+          path="/login"
+          element={<Login handleToken={handleToken} idUser={idUser} />}
+        />
+        <Route
+          path="/publish"
+          element={<Publish token={token} idUser={idUser} />}
+        />
+        <Route
+          path="/payment"
+          element={<Payment token={token} idUser={idUser} />}
+        />
       </Routes>
     </Router>
   );

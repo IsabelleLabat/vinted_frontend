@@ -314,6 +314,10 @@ header {
 
 /* Publish */
 
+.picture-file {
+  height: 100px;
+}
+
 .publish-container h1 {
   margin-bottom: 50px;
   font-size: 24px;
@@ -387,10 +391,81 @@ header {
 
 /* payment */
 
+.bcg-payment {
+  background-color: #ebedee;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.cart > h2 {
+  color: #999999;
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+
 .cart {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px red;
+
+  width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 24px;
+}
+.cart-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-content > span {
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.cart-content > .total-amount {
+  color: #111111;
+  font-weight: 700;
+}
+
+.resume {
+  margin: 15px 0;
+}
+
+.divider {
+  background: hsla(0, 0%, 7%, 0.1);
+  display: block;
+  height: 1px;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.StripeElement,
+.payment-card {
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.149), 0 1px 0 rgba(0, 0, 0, 0.02);
+  display: block;
+  font-size: 1em;
+  margin: 10px 0 20px;
+  outline: 0;
+  padding: 10px 14px;
+}
+
+.payment-button {
+  background: #00c06d;
+  border: 1px solid;
+  border-color: #00c06d;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  height: 44px;
+  line-height: 22px;
+  margin-top: 8px;
+  padding: 0 14px;
+  width: 100%;
 }

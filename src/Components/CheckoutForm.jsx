@@ -2,9 +2,10 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = ({ title, price }) => {
+const CheckoutForm = ({ title, total, idUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
+  //   console.log(idUser);
 
   const stripe = useStripe();
 
@@ -18,19 +19,17 @@ const CheckoutForm = ({ title, price }) => {
       const cardElement = elements.getElement(CardElement);
 
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: "L'id de l'utilisateur",
+        name: `${idUser}`,
       });
 
       const StripeToken = stripeResponse.token.id;
-
-      //   Je fais une requête à mon back et je lui envoie mon stripeToken
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
           token: StripeToken,
-          title: { title },
-          amount: { price },
+          title: title,
+          amount: total,
         }
       );
       console.log(response.data);
@@ -49,13 +48,17 @@ const CheckoutForm = ({ title, price }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Formulaire de paiement</h1>
       <CardElement />
 
       {succeeded ? (
-        <p>Paiement validé</p>
+        <p>Paiement validé, merci pour votre achat !</p>
       ) : (
-        <input type="submit" value="Pay" disabled={isLoading} />
+        <input
+          className="payment-button"
+          type="submit"
+          value="Pay"
+          disabled={isLoading}
+        />
       )}
     </form>
   );
