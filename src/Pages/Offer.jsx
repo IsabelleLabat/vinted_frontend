@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Offer = () => {
@@ -22,12 +23,12 @@ const Offer = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <span>En cours de chargement</span>
   ) : (
-    <main>
+    <main className="main-offer">
       {/* <h1>Je suis sur la page Offer</h1> */}
       {/* <Link to="/">Cliquez ici pour naviguer vers la page Home</Link> */}
       {/* <p> The product id is : {id}</p> */}
@@ -55,7 +56,7 @@ const Offer = () => {
         <p className="offer-product-description">{data.product_description}</p>
 
         <div className="offer-owner">
-          {data.owner.account.avatar.secure_url ? (
+          {data.owner.account.avatar ? (
             <img
               className="offer-avatar"
               src={data.owner.account.avatar.secure_url}
@@ -64,6 +65,14 @@ const Offer = () => {
           ) : null}
 
           <p>{data.owner.account.username}</p>
+        </div>
+        <div>
+          <Link
+            to="/payment"
+            state={{ title: data.product_name, price: data.product_price }}
+          >
+            <button className="signin-submitButton">Acheter</button>{" "}
+          </Link>
         </div>
       </div>
     </main>

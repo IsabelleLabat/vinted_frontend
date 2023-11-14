@@ -42,13 +42,15 @@ const Header = ({ token, handleToken, searchTerm, setSearchTerm }) => {
             </Link>
             <Link to={"/login"}>
               <button className="header-button">Se connecter</button>
-            </Link>{" "}
+            </Link>
           </>
         )}
 
-        <button className=" header-button sell-button">
-          Vends tes articles
-        </button>
+        <Link to={token ? "/publish" : "/login"}>
+          <button className=" header-button sell-button">
+            Vends tes articles
+          </button>
+        </Link>
       </div>
     </header>
   );

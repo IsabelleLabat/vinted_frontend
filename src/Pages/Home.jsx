@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = ({ params, searchTerm }) => {
+const Home = ({ params, searchTerm, token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   // const [avatarImg, setavatarImg] = useState(true);
@@ -27,7 +27,15 @@ const Home = ({ params, searchTerm }) => {
         <div>
           <div className="home-hero-box">
             Prêts à faire du tri dans vos placards ?
-            <button>Commencer à vendre</button>
+            {token ? (
+              <Link to={"/publish"}>
+                <button>Commencer à vendre</button>
+              </Link>
+            ) : (
+              <Link to={"/login"}>
+                <button>Commencer à vendre</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

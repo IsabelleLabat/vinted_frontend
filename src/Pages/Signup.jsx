@@ -76,9 +76,10 @@ const Signup = ({ handleToken }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="signup" onSubmit={handleSubmit}>
       <h1>S'inscrire</h1>
       <input
+        className="signup-input"
         id="name"
         type="text"
         placeholder="Nom d'utilisateur"
@@ -88,6 +89,7 @@ const Signup = ({ handleToken }) => {
       />
 
       <input
+        className="signup-input"
         id="email"
         type="text"
         placeholder="Email"
@@ -97,6 +99,7 @@ const Signup = ({ handleToken }) => {
       />
 
       <input
+        className="signup-input"
         id="password"
         type="password"
         placeholder="Mot de Passe"
@@ -104,8 +107,8 @@ const Signup = ({ handleToken }) => {
         value={password}
         onChange={handlePasswordChange}
       />
-      <div className="checkbox">
-        <div>
+      <div className="signup-newsletter">
+        <div className="signup-checkbox">
           <input
             className="input-checkbox"
             type="checkbox"
@@ -114,14 +117,14 @@ const Signup = ({ handleToken }) => {
           />
           <span>S'inscrire à la newsletter</span>
         </div>
-        <p>
+        <p className="terms-conditions">
           En m'inscrivant je confirme avoir lu et accepté les Termes &
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
       </div>
 
-      <input className="submitButton" type="submit" value="S'inscrire" />
+      <input className="signin-submitButton" type="submit" value="S'inscrire" />
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <Link to={"/login"}>
         <span className="connect">Tu as déjà un compte? Connecte-toi</span>

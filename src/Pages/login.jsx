@@ -39,17 +39,18 @@ const Login = ({ handleToken }) => {
       console.log(response.data);
       // Cookies.set("token", response.data.token);
       handleToken(response.data.token);
-      navigate("/");
+      navigate("/publish");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="signup" onSubmit={handleSubmit}>
       <h1>Se Connecter</h1>
 
       <input
+        className="signup-input"
         id="email"
         type="text"
         placeholder="Email"
@@ -59,6 +60,7 @@ const Login = ({ handleToken }) => {
       />
 
       <input
+        className="signup-input"
         id="password"
         type="password"
         placeholder="Mot de Passe"
@@ -67,7 +69,11 @@ const Login = ({ handleToken }) => {
         onChange={handlePasswordChange}
       />
 
-      <input className="submitButton" type="submit" value="Se connecter" />
+      <input
+        className="signin-submitButton"
+        type="submit"
+        value="Se connecter"
+      />
     </form>
   );
 };

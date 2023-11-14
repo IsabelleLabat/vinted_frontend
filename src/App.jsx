@@ -2,12 +2,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Cookies from "js-cookie";
 import { useState } from "react";
+
 // Pages
 import Home from "./Pages/Home";
 import Offer from "./Pages/Offer";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/login";
 import Publish from "./Pages/Publish";
+import Payment from "./Pages/Payment";
+
 // Components
 import Header from "./Components/Header";
 
@@ -41,11 +44,15 @@ function App() {
         handleToken={handleToken}
       />
       <Routes>
-        <Route path="/" element={<Home searchTerm={searchTerm} />} />
+        <Route
+          path="/"
+          element={<Home searchTerm={searchTerm} toke={token} />}
+        />
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
