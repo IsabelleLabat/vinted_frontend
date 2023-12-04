@@ -10,7 +10,7 @@ const Home = ({ params, searchTerm, token }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchTerm}`
+        `https://site--vinted-backend--7zwqb2nbgsj7.code.run/offers?title=${searchTerm}`
       );
       // console.log(response.data);
       setData(response.data);

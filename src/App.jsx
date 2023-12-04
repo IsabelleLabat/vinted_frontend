@@ -53,7 +53,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home searchTerm={searchTerm} toke={token} />}
+          element={<Home searchTerm={searchTerm} token={token} />}
         />
         <Route path="/offers/:id" element={<Offer />} />
         <Route
