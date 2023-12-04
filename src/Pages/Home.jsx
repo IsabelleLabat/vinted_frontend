@@ -12,7 +12,7 @@ const Home = ({ params, searchTerm, token }) => {
       const response = await axios.get(
         `https://site--vinted-backend--7zwqb2nbgsj7.code.run/offers?title=${searchTerm}`
       );
-      // console.log(response.data);
+      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
