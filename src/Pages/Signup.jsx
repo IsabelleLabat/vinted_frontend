@@ -8,6 +8,7 @@ const Signup = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [picture, setPicture] = useState();
 
   const [newsletter, setNewsletter] = useState(false);
 
@@ -39,17 +40,25 @@ const Signup = ({ handleToken }) => {
     try {
       //   Je fais disparaitre un éventuel message d'erreur
       setErrorMessage("");
+
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("username", name);
+      formData.append("password", password);
+      formData.append("picture", picture);
+      formData.append("newsletter", newsletter);
       //   Requête axios :
       // - Premier argument : l'url que j'interroge
       // - deuxième : le body que j'envoi
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          email: email,
-          username: name,
-          password: password,
-          newsletter: Boolean,
-        }
+        "http://localhost:3000/user/signup",
+        formData
+        // {
+        //   email: email,
+        //   username: name,
+        //   password: password,
+        //   newsletter: Boolean,
+        // }
       );
       //   console.log(data);
       //   console.log(data.token);
@@ -62,12 +71,12 @@ const Signup = ({ handleToken }) => {
       // Je navigue vers ma page /
       navigate("/");
     } catch (error) {
-      //   console.log(error.response.status); // Pour voir le message d'erreur transmis par le serveur
+      // console.log(error.response.status); // Pour voir le message d'erreur transmis par le serveur
       // Si je reçois le message "This email already has an account"
-      if (error.response.data.message === "Missing parameters") {
+      if (error.message === "Missing parameters") {
         // Je met à jour mon state errorMessage
         setErrorMessage("Please fill in all fields");
-      } else if (error.response.status === 409) {
+      } else if (error.status === 409) {
         setErrorMessage(
           "This email already has an account, please use another one :)"
         );
@@ -97,6 +106,22 @@ const Signup = ({ handleToken }) => {
         value={email}
         onChange={handleEmailChange}
       />
+
+      <input
+        className="input-file"
+        type="file"
+        onChange={(event) => {
+          // console.log(event);
+          setPicture(event.target.files[0]);
+        }}
+      />
+      {picture && (
+        <img
+          className="picture-file"
+          src={URL.createObjectURL(picture)}
+          alt="pic"
+        />
+      )}
 
       <input
         className="signup-input"

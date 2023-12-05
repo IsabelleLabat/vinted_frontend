@@ -5,7 +5,7 @@ import CheckoutForm from "../Components/CheckoutForm";
 import { Navigate } from "react-router-dom";
 
 const stripePromise = loadStripe(
-  "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
+  "pk_test_pk_test_51OJteCBSd1aIATMvzRlgtrbuGc6P6v7dRLvoLqQkzSRoVFYf1w8XtHwk1GecH1B6e7ZgRIKZFkMyZrKerIvVesvs00JbORKBXu"
 );
 
 const Payment = ({ token, idUser }) => {

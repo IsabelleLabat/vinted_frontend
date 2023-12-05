@@ -9,12 +9,16 @@ const Home = ({ params, searchTerm, token }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `https://site--vinted-backend--7zwqb2nbgsj7.code.run/offers?title=${searchTerm}`
-      );
-      console.log(response.data);
-      setData(response.data);
-      setIsLoading(false);
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/offers?title=${searchTerm}`
+        );
+        console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response.data);
+      }
     };
     fetchData();
   }, [searchTerm]);
@@ -42,7 +46,7 @@ const Home = ({ params, searchTerm, token }) => {
 
       <div className="home-wrapper">
         {data.offers.map((offer) => {
-          // console.log(offer);
+          console.log(offer);
 
           return (
             <Link to={`/offers/${offer._id}`} key={offer._id}>
@@ -62,7 +66,7 @@ const Home = ({ params, searchTerm, token }) => {
 
                 <img
                   className="offer-img-home"
-                  src={offer.product_image.url}
+                  src={offer.product_image.secure_url}
                   alt="produit"
                 />
                 <p className="home-price">{offer.product_price} €</p>

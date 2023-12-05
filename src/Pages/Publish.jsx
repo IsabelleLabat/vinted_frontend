@@ -39,7 +39,7 @@ const Publish = ({ token }) => {
       // - le body, ici un formData
       // - Les potentiels headers à envoyer : ici un token et le type du body que j'envoie
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:3000/offer/publish",
         formData,
         {
           headers: {
@@ -52,7 +52,7 @@ const Publish = ({ token }) => {
       console.log(response);
       // setPictureFromCloudinary(response.data.secure_url);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   };
 
